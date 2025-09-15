@@ -36,28 +36,31 @@ import "../styles/global.css";
           </div>
 
   <div class="flex items-center gap-2">
-    <div class="flex items-center bg-white/60 rounded-full p-1 shadow-sm border border-white/30">
-    <select id="species">
-      <option value="Adelie">Adelie</option>
-      <option value="Chinstrap">Chinstrap</option>
-      <option value="Gentoo">Gentoo</option>
-    </select>
+   <div class="flex items-center bg-white/60 rounded-full p-1 shadow-sm border border-white/30">
+  <select id="species" class="bg-transparent px-3 py-1 rounded-full font-medium text-gray-700">
+    <option value="Adelie">Adelie</option>
+    <option value="Chinstrap">Chinstrap</option>
+    <option value="Gentoo">Gentoo</option>
+  </select>
+</div>
 
-    <script>
-      const currentSpecies = location.pathname.split("/").pop();
-      const select = document.querySelector("#species") as HTMLSelectElement;
-      if (select) {
-        for (const option of select.options) {
-          option.selected = option.value === currentSpecies;
-        }
-      }
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const select = document.querySelector("#species");
+    if (!select) return;
 
-      select?.addEventListener("change", (evt) => {
-        const value = (evt.target as HTMLSelectElement).value;
-        location.pathname = '/species/' + value;
-      });
-    </script>
-      </div>
+    const currentSpecies = window.location.pathname.split("/").pop();
+    Array.from(select.options).forEach(option => {
+      option.selected = option.value === currentSpecies;
+    });
+
+    select.addEventListener("change", (evt) => {
+      const value = evt.target.value;
+      if (!value) return;
+      window.location.pathname = '/species/' + value;
+    });
+  });
+</script>
 
       <!-- Séparateur -->
       <div class="w-px h-6 bg-gray-300"></div>
