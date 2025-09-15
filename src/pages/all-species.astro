@@ -20,6 +20,12 @@ import GraphicSpecies from "../components/GraphicSpecies.astro";
       <a href="#Chinstrap" class="px-8 py-4 bg-purple-500 text-white rounded-full font-semibold text-lg transition-all duration-300 hover:bg-purple-600 hover:scale-105 shadow-lg hover:shadow-xl">
         🐧 Chinstrap
       </a>
+
+    <select id="species-select" class="px-4 py-2 rounded-lg border border-gray-300 bg-white text-gray-700 shadow-sm hover:shadow-md transition">
+      <option value="#Adelie">🐧 Adelie</option>
+      <option value="#Gentoo">🐧 Gentoo</option>
+      <option value="#Chinstrap">🐧 Chinstrap</option>
+    </select>
     </nav>
 
     <div class="slider-container overflow-x-auto pb-4">
@@ -64,31 +70,41 @@ import GraphicSpecies from "../components/GraphicSpecies.astro";
   </div>
 
   <!-- Script pour gérer les ancres via JS -->
-  <script>
-    const anchorLinks = document.querySelectorAll('nav a[href^="#"]');
+<script>
+  const anchorLinks = document.querySelectorAll('nav a[href^="#"]');
+  const select = document.getElementById('species-select') as HTMLSelectElement;
 
-    anchorLinks.forEach(link => {
-      link.addEventListener("click", e => {
-        e.preventDefault(); 
-        const targetId = link.getAttribute("href");
-        if (!targetId) return;
-        window.location.hash = targetId;
-        document.querySelector(targetId)?.scrollIntoView({ behavior: "smooth" });
-      });
+  // Ancres : scroll doux + hash
+  anchorLinks.forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      const targetId = link.getAttribute("href");
+      if (!targetId) return;
+      window.location.hash = targetId;
+      document.querySelector(targetId)?.scrollIntoView({ behavior: "smooth" });
+      select.value = targetId; // synchronise le select
     });
-  </script>
+  });
+
+  // Select : scroll doux + hash
+  select.addEventListener("change", e => {
+    const targetId = select.value;
+    if (!targetId) return;
+    window.location.hash = targetId;
+    document.querySelector(targetId)?.scrollIntoView({ behavior: "smooth" });
+  });
+
+  // Si l'utilisateur arrive avec un hash déjà présent
+  const hash = window.location.hash;
+  if (hash && select) select.value = hash;
+</script>
 </Layout>
 
 <style>
-/* --- Styles du slider et responsive (inchangés) --- */
 html { scroll-behavior: smooth; }
 .slider-container { scroll-behavior: smooth; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: rgba(59,130,246,0.5) rgba(0,0,0,0.1); }
 .slider-container::-webkit-scrollbar { height:8px; }
-.slider-container::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius:4px; }
-.slider-container::-webkit-scrollbar-thumb { background: linear-gradient(to right,#3b82f6,#8b5cf6); border-radius:4px; }
-.slider-container::-webkit-scrollbar-thumb:hover { background: linear-gradient(to right,#1d4ed8,#7c3aed); }
 section > div { transition: all 0.3s ease; }
-section > div:hover { transform: translateY(-5px); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15); }
 @media(max-width:1024px){section{min-width:600px;}}
 @media(max-width:768px){section{min-width:90vw;} nav{flex-direction:column;gap:4;} nav a{padding:12px 24px;text-align:center;}}
 </style>

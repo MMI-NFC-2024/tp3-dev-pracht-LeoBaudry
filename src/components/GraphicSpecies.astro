@@ -28,7 +28,7 @@ const speciesConfig = {
   }
 };
 
-const config = speciesConfig[species] || speciesConfig["Adelie"];
+const config = speciesConfig[species as keyof typeof speciesConfig] || speciesConfig["Adelie"];
 
 const options = {
   marginLeft: 60,
