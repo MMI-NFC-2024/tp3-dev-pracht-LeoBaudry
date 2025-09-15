@@ -35,63 +35,62 @@ import "../styles/global.css";
             </div>
           </div>
 
-                      <div class="flex items-center gap-2">
-            
-            <!-- Groupe Espèces -->
-            <div class="flex items-center bg-white/60 rounded-full p-1 shadow-sm border border-white/30">
-  <select id="species">
-          <option value="Adelie">Adelie</option>
-          <option value="Chinstrap">Chinstrap</option>
-          <option value="Gentoo">Gentoo</option>
-          </select>
-          <script>
-            const currentSpecies = location.pathname.split("/").pop();
-            const select = document.querySelector("#species") as HTMLSelectElement;
-            if (select) {
-              for (const option of select.options) {
-                option.selected = option.value === currentSpecies;
-              }
-            }
+  <div class="flex items-center gap-2">
+    <div class="flex items-center bg-white/60 rounded-full p-1 shadow-sm border border-white/30">
+    <select id="species">
+      <option value="Adelie">Adelie</option>
+      <option value="Chinstrap">Chinstrap</option>
+      <option value="Gentoo">Gentoo</option>
+    </select>
 
-            select?.addEventListener("change", (evt) => {
-              const value = (evt.target as HTMLSelectElement).value;
-              location.pathname = '/species/' + value;
-            });
-          </script>
-            </div>
+    <script>
+      const currentSpecies = location.pathname.split("/").pop();
+      const select = document.querySelector("#species") as HTMLSelectElement;
+      if (select) {
+        for (const option of select.options) {
+          option.selected = option.value === currentSpecies;
+        }
+      }
 
-            <!-- Séparateur -->
-            <div class="w-px h-6 bg-gray-300"></div>
+      select?.addEventListener("change", (evt) => {
+        const value = (evt.target as HTMLSelectElement).value;
+        location.pathname = '/species/' + value;
+      });
+    </script>
+      </div>
 
-            <!-- Groupe Vues -->
-            <div class="flex items-center gap-2">
-              <a href="/test-iframe" 
-                 class="nav-special-link flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-full text-sm font-medium transition-all duration-300 hover:shadow-lg hover:scale-105"
-                 target="_top">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2"></path>
-                </svg>
-                Iframe
-              </a>
+      <!-- Séparateur -->
+      <div class="w-px h-6 bg-gray-300"></div>
+
+      <!-- Groupe Vues -->
+      <div class="flex items-center gap-2">
+        <a href="/test-iframe" 
+            class="nav-special-link flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-full text-sm font-medium transition-all duration-300 hover:shadow-lg hover:scale-105"
+            target="_top">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2"></path>
+          </svg>
+          Iframe
+        </a>
               
-              <a href="/all-species" 
-                 class="nav-special-link flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-full text-sm font-medium transition-all duration-300 hover:shadow-lg hover:scale-105"
-                 target="_top">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                </svg>
-                Ancres
-              </a>
-            </div>
-          </div>
+        <a href="/all-species" 
+            class="nav-special-link flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-full text-sm font-medium transition-all duration-300 hover:shadow-lg hover:scale-105"
+            target="_top">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          </svg>
+          Ancres
+        </a>
+      </div>
+    </div>
 
 
 
 
         
 
-        </div>
-      </div>
+    </div>
+    </div>
     </nav>
 
     <!-- Contenu principal -->

@@ -14,78 +14,9 @@ import Layout2 from "../layouts/LayoutIframe.astro";
       style="width: 100%; border: none;"
     >
     </iframe>
-      <!-- Menu  -->
-  <nav class="flex justify-center mb-6">
-    <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-3 shadow-lg border border-white/30">
-      <div class="flex items-center gap-2">
-        
-        <!-- Boutons d'espèces -->
-        <a href="/species/Adelie" 
-           target="speciesFrame" 
-           class="species-nav-btn bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700">
-          <span class="text-xl">🐧</span>
-          <span class="font-semibold">Adelie</span>
-          <div class="nav-shine"></div>
-        </a>
-
-        <a href="/species/Gentoo" 
-           target="speciesFrame" 
-           class="species-nav-btn bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700">
-          <span class="text-xl">🐧</span>
-          <span class="font-semibold">Gentoo</span>
-          <div class="nav-shine"></div>
-        </a>
-
-        <a href="/species/Chinstrap" 
-           target="speciesFrame" 
-           class="species-nav-btn bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700">
-          <span class="text-xl">🐧</span>
-          <span class="font-semibold">Chinstrap</span>
-          <div class="nav-shine"></div>
-        </a>
-      </div>
-    </div>
-  </nav>
   </div>
 </div>
 </Layout2>
-
-<style>
-  /* Style des boutons de navigation */
-  .species-nav-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 20px;
-    color: white;
-    text-decoration: none;
-    border-radius: 12px;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  }
-
-
-  .species-nav-btn:hover .nav-shine {
-    left: 100%;
-  }
-
-  /* Responsive */
-  @media (max-width: 768px) {
-    nav > div > div {
-      flex-direction: column;
-      gap: 8px;
-      align-items: stretch;
-    }
-
-    .species-nav-btn {
-      justify-content: center;
-      padding: 16px;
-    }
-  }
-</style>
 
 <script>
   const iframe = document.getElementById("speciesFrame") as HTMLIFrameElement;
