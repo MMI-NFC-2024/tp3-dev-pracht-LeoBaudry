@@ -41,10 +41,18 @@ import "../styles/global.css";
           <option value="Gentoo">Gentoo</option>
           </select>
           <script>
-          document.querySelector("#species")?.addEventListener("change", (evt) => {
-          const value = (evt.target as HTMLSelectElement).value;
-          location.pathname = '/species/' + value;
-          });
+            const currentSpecies = location.pathname.split("/").pop();
+            const select = document.querySelector("#species") as HTMLSelectElement;
+            if (select) {
+              for (const option of select.options) {
+                option.selected = option.value === currentSpecies;
+              }
+            }
+
+            select?.addEventListener("change", (evt) => {
+              const value = (evt.target as HTMLSelectElement).value;
+              location.pathname = '/species/' + value;
+            });
           </script>
 
         </div>
