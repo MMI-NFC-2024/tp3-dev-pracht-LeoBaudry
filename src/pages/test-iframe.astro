@@ -21,15 +21,13 @@ import Layout2 from "../layouts/LayoutIframe.astro";
 <script>
   const iframe = document.getElementById("speciesFrame") as HTMLIFrameElement;
 
-  function resizeIframe() {
+  // Redimensionnement automatique
+  iframe.addEventListener("load", () => {
     try {
-      if (iframe?.contentWindow?.document.body) {
-        iframe.style.height = iframe.contentWindow.document.body.scrollHeight + "px";
-      }
-    } catch (e) {
-      console.warn("Impossible de redimensionner l'iframe :", e);
-    }
-  }
+      iframe.style.height = iframe.contentWindow?.document.body.scrollHeight + "px";
+    } catch {}
+  });
 
-  iframe.addEventListener("load", resizeIframe);
+  // Changer la page affichée via JS
+  iframe.src = "/species/Adelie";
 </script>
